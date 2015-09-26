@@ -13,8 +13,17 @@ public class Chess {
         Position temp = board.getBRey();
         if(temp!=null)
             King.getMoves(board, temp, moves);
+        
         temp = board.getBReyna();
         if(temp!=null)
             Queen.getMoves(board, temp, moves);
+        
+        temp = board.getBTorre_I();
+        if(temp!=null)
+            Torre.getMoves(board, temp, moves);
+        
+        temp = board.getBTorre_D();
+        if(temp!=null)
+            Torre.getMoves(board, temp, moves);
     }
 }
