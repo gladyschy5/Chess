@@ -16,11 +16,11 @@ public class Chess {
     public void start(){
         ArrayList<char[][]> boards = new ArrayList<char[][]>();
         
-        generateMoves(board, 3, boards);
+        generateMoves(board, 3, boards, true);
         for(int i = 0; i < boards.size(); i++)
             print(boards.get(i));
     }
-    public void generateMoves(Board board, int profundidad, ArrayList<char[][]> boards){
+    public void generateMoves(Board board, int profundidad, ArrayList<char[][]> boards, boolean white){
         System.out.println("**********");
         print(board.board);
         System.out.println("###########");
@@ -28,77 +28,77 @@ public class Chess {
         
         Position temp = board.getBRey();
         if(temp!=null){
-            rey.getMoves(board, temp, moves, true);
-            generarBoard(profundidad, temp, board, moves, boards);
+            rey.getMoves(board, temp, moves, white);
+            generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBReyna();
         if(temp!=null){
             reyna.getMoves(board, temp, moves);
-            generarBoard(profundidad, temp, board, moves, boards);
+            generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBTorre_I();
         if(temp!=null){
             torre.getMoves(board, temp, moves);
-            generarBoard(profundidad, temp, board, moves, boards);
+            generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBTorre_D();
         if(temp!=null){
             torre.getMoves(board, temp, moves);
-            generarBoard(profundidad, temp, board, moves, boards);
+            generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBAlfil_I();
         if(temp!=null){
             alfil.getMoves(board, temp, moves);
-            generarBoard(profundidad, temp, board, moves, boards);
+            generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBAlfil_D();
         if(temp!=null){
             alfil.getMoves(board, temp, moves);
-            generarBoard(profundidad, temp, board, moves, boards);
+            generarBoard(profundidad, temp, board, moves, boards, white);
         }
         
         temp = board.getBPeon1();
         if(temp!=null){
             peon.getMoves(board, temp, moves, true);
-            generarBoard(profundidad, temp, board, moves, boards);
+            generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBPeon2();
         if(temp!=null){
             peon.getMoves(board, temp, moves, true);
-            generarBoard(profundidad, temp, board, moves, boards);
+            generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBPeon3();
         if(temp!=null){
             peon.getMoves(board, temp, moves, true);
-            generarBoard(profundidad, temp, board, moves, boards);
+            generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBPeon4();
         if(temp!=null){
             peon.getMoves(board, temp, moves, true);
-            generarBoard(profundidad, temp, board, moves, boards);
+            generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBPeon5();
         if(temp!=null){
             peon.getMoves(board, temp, moves, true);
-            generarBoard(profundidad, temp, board, moves, boards);
+            generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBPeon6();
         if(temp!=null){
             peon.getMoves(board, temp, moves, true);
-            generarBoard(profundidad, temp, board, moves, boards);
+            generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBPeon7();
         if(temp!=null){
             peon.getMoves(board, temp, moves, true);
-            generarBoard(profundidad, temp, board, moves, boards);
+            generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBPeon8();
         if(temp!=null){
             peon.getMoves(board, temp, moves, true);
-            generarBoard(profundidad, temp, board, moves, boards);
+            generarBoard(profundidad, temp, board, moves, boards, white);
         }
     }
-    public void generarBoard(int profundidad, Position currentPosition, Board currentBoard, ArrayList<Position> moves, ArrayList<char[][]> boards){
+    public void generarBoard(int profundidad, Position currentPosition, Board currentBoard, ArrayList<Position> moves, ArrayList<char[][]> boards, boolean white){
         for(Position pos: moves){
             Board nuevoBoard = new Board();
             nuevoBoard.board = board.board;
@@ -106,7 +106,10 @@ public class Chess {
             if(profundidad == 0){
                 boards.add(nuevoBoard.board);
             }else{
-                generateMoves(nuevoBoard,profundidad-1, boards);
+                if(white)
+                    generateMoves(nuevoBoard,profundidad-1, boards, false);
+                else
+                    generateMoves(nuevoBoard,profundidad-1, boards, true);
             }
         }
     }
