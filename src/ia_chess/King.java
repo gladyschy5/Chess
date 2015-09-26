@@ -18,8 +18,6 @@ public class King {
         this.moves = moves;
         this.board = board;
         
-        //if(board.isWhite(pos))
-        
         isMove(pos.x+1, pos.y, white);
         isMove(pos.x+1, pos.y-1, white);       
         isMove(pos.x, pos.y-1, white);
@@ -30,7 +28,12 @@ public class King {
         isMove(pos.x+1, pos.y+1, white);
     }
     public void isMove(int x, int y, boolean white){
-        if(board.isNotOut(x, y))
-            moves.add(new Position(x,y));
+        if(white){
+            if(board.isNotOut(x, y) && !board.isWhite(new Position(x,y)))
+                moves.add(new Position(x,y)); 
+        }else{
+            if(board.isNotOut(x, y) && !board.isBlack(new Position(x,y)))
+                moves.add(new Position(x,y)); 
+        }  
     }
 }

@@ -33,68 +33,68 @@ public class Chess {
         }
         temp = board.getBReyna();
         if(temp!=null){
-            reyna.getMoves(board, temp, moves);
+            reyna.getMoves(board, temp, moves, white);
             generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBTorre_I();
         if(temp!=null){
-            torre.getMoves(board, temp, moves);
+            torre.getMoves(board, temp, moves, white);
             generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBTorre_D();
         if(temp!=null){
-            torre.getMoves(board, temp, moves);
+            torre.getMoves(board, temp, moves, white);
             generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBAlfil_I();
         if(temp!=null){
-            alfil.getMoves(board, temp, moves);
+            alfil.getMoves(board, temp, moves, white);
             generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBAlfil_D();
         if(temp!=null){
-            alfil.getMoves(board, temp, moves);
+            alfil.getMoves(board, temp, moves, white);
             generarBoard(profundidad, temp, board, moves, boards, white);
         }
         
         temp = board.getBPeon1();
         if(temp!=null){
-            peon.getMoves(board, temp, moves, true);
+            peon.getMoves(board, temp, moves, white);
             generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBPeon2();
         if(temp!=null){
-            peon.getMoves(board, temp, moves, true);
+            peon.getMoves(board, temp, moves, white);
             generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBPeon3();
         if(temp!=null){
-            peon.getMoves(board, temp, moves, true);
+            peon.getMoves(board, temp, moves, white);
             generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBPeon4();
         if(temp!=null){
-            peon.getMoves(board, temp, moves, true);
+            peon.getMoves(board, temp, moves, white);
             generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBPeon5();
         if(temp!=null){
-            peon.getMoves(board, temp, moves, true);
+            peon.getMoves(board, temp, moves, white);
             generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBPeon6();
         if(temp!=null){
-            peon.getMoves(board, temp, moves, true);
+            peon.getMoves(board, temp, moves, white);
             generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBPeon7();
         if(temp!=null){
-            peon.getMoves(board, temp, moves, true);
+            peon.getMoves(board, temp, moves, white);
             generarBoard(profundidad, temp, board, moves, boards, white);
         }
         temp = board.getBPeon8();
         if(temp!=null){
-            peon.getMoves(board, temp, moves, true);
+            peon.getMoves(board, temp, moves, white);
             generarBoard(profundidad, temp, board, moves, boards, white);
         }
     }
