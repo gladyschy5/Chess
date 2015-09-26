@@ -3,71 +3,37 @@ package ia_chess;
 import java.util.ArrayList;
 
 public class Queen {
-    private int value=10;
-    public static void getMoves(Board board, Position pos, ArrayList<Position> moves){
-        int nX = pos.x;
-        int nY = pos.y;
+    private Position pos;
+    private ArrayList<Position> moves;
+    private Board board;
+    public Queen() {
+        this.pos = null;
+        this.moves = new ArrayList<Position>();
+        this.board = null;
+    }
+    public void getMoves(Board board, Position pos, ArrayList<Position> moves){ 
+        this.pos = pos;
+        this.moves = moves;
+        this.board = board;
         
-        while(board.isEmpty(nX++, nY)){
-            moves.add(new Position(nX,nY));  
+        isMove(pos.x, pos.y,  1,  0);
+        isMove(pos.x, pos.y,  1, -1);
+        isMove(pos.x, pos.y,  0, -1);
+        isMove(pos.x, pos.y, -1, -1);
+        isMove(pos.x, pos.y, -1,  0);
+        isMove(pos.x, pos.y, -1,  1);
+        isMove(pos.x, pos.y,  0,  1);
+        isMove(pos.x, pos.y,  1,  1);
+    }
+    public void isMove(int x, int y, int varx, int vary){
+        int xx = x + varx;
+        int yy = y + vary;
+        while(board.isEmpty(xx, yy)){
+            moves.add(new Position(xx,yy)); 
+            xx+=varx;
+            yy+=vary;
         }
-        if(board.isNotOut(nX, nY))
-            moves.add(new Position(nX,nY));
-        
-        nX = pos.x;
-        nY = pos.y;
-        while(board.isEmpty(nX++, nY--)){
-            moves.add(new Position(nX,nY));  
-        }
-        if(board.isNotOut(nX, nY))
-            moves.add(new Position(nX,nY));
-        
-        nX = pos.x;
-        nY = pos.y;
-        while(board.isEmpty(nX, nY--)){
-            moves.add(new Position(nX,nY));  
-        }
-        if(board.isNotOut(nX, nY))
-            moves.add(new Position(nX,nY));
-        
-        nX = pos.x;
-        nY = pos.y;
-        while(board.isEmpty(nX--, nY--)){
-            moves.add(new Position(nX,nY));  
-        }
-        if(board.isNotOut(nX, nY))
-            moves.add(new Position(nX,nY));
-        
-        nX = pos.x;
-        nY = pos.y;
-        while(board.isEmpty(nX--, nY)){
-            moves.add(new Position(nX,nY));  
-        }
-        if(board.isNotOut(nX, nY))
-            moves.add(new Position(nX,nY));
-        
-        nX = pos.x;
-        nY = pos.y;
-        while(board.isEmpty(nX--, nY++)){
-            moves.add(new Position(nX,nY));  
-        }
-        if(board.isNotOut(nX, nY))
-            moves.add(new Position(nX,nY));
-        
-        nX = pos.x;
-        nY = pos.y;
-        while(board.isEmpty(nX, nY++)){
-            moves.add(new Position(nX,nY));  
-        }
-        if(board.isNotOut(nX, nY))
-            moves.add(new Position(nX,nY));
-        
-        nX = pos.x;
-        nY = pos.y;
-        while(board.isEmpty(nX++, nY++)){
-            moves.add(new Position(nX,nY));  
-        }
-        if(board.isNotOut(nX, nY))
-            moves.add(new Position(nX,nY));
+        if(board.isNotOut(xx, yy))
+            moves.add(new Position(xx,yy));
     }
 }

@@ -3,44 +3,31 @@ package ia_chess;
 import java.util.ArrayList;
 
 public class King {
-    private int value=100000;
-    
-    public static void getMoves(Board board, Position pos, ArrayList<Position> moves){      
-        int nX = pos.x+1;
-        int nY = pos.y;
-        if(board.isNotOut(nX, nY))
-            moves.add(new Position(nX,nY));
-        nX = pos.x+1;
-        nY = pos.y-1;
-        if(board.isNotOut(nX, nY))
-            moves.add(new Position(nX,nY));
-        nX = pos.x;
-        nY = pos.y-1;
-        if(board.isNotOut(nX, nY))
-            moves.add(new Position(nX,nY));
-        nX = pos.x-1;
-        nY = pos.y-1;
-        if(board.isNotOut(nX, nY))
-            moves.add(new Position(nX,nY));
-        nX = pos.x-1;
-        nY = pos.y;
-        if(board.isNotOut(nX, nY))
-            moves.add(new Position(nX,nY));
-        nX = pos.x-1;
-        nY = pos.y+1;
-        if(board.isNotOut(nX, nY))
-            moves.add(new Position(nX,nY));
-        nX = pos.x;
-        nY = pos.y+1;
-        if(board.isNotOut(nX, nY))
-            moves.add(new Position(nX,nY));
-        nX = pos.x+1;
-        nY = pos.y+1;
-        if(board.isNotOut(nX, nY))
-            moves.add(new Position(nX,nY));
+    private Position pos;
+    private ArrayList<Position> moves;
+    private Board board;
+    public King() {
+        this.pos = null;
+        this.moves = new ArrayList<Position>();
+        this.board = null;
     }
-    public static void getMoves(Board board, Position pos){
-        ArrayList<Position> moves = new ArrayList<Position>();
-        getMoves(board, pos, moves);
+    
+    public void getMoves(Board board, Position pos, ArrayList<Position> moves){ 
+        this.pos = pos;
+        this.moves = moves;
+        this.board = board;
+        
+        isMove(pos.x+1, pos.y);
+        isMove(pos.x+1, pos.y-1);       
+        isMove(pos.x, pos.y-1);
+        isMove(pos.x-1, pos.y-1);
+        isMove(pos.x-1, pos.y);
+        isMove(pos.x-1, pos.y+1);
+        isMove(pos.x, pos.y+1);
+        isMove(pos.x+1, pos.y+1);
+    }
+    public void isMove(int x, int y){
+        if(board.isNotOut(x, y))
+            moves.add(new Position(x,y));
     }
 }
