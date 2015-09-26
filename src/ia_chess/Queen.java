@@ -8,18 +8,66 @@ public class Queen {
         int nX = pos.x;
         int nY = pos.y;
         
-        while(board.isEmpty(nY--, nY--)){
+        while(board.isEmpty(nX++, nY)){
             moves.add(new Position(nX,nY));  
         }
-        if(board.isNotOut(nY, nY))
+        if(board.isNotOut(nX, nY))
             moves.add(new Position(nX,nY));
         
         nX = pos.x;
         nY = pos.y;
-        while(board.isEmpty(nY--, nY--)){
+        while(board.isEmpty(nX++, nY--)){
             moves.add(new Position(nX,nY));  
         }
-        if(board.isNotOut(nY, nY))
+        if(board.isNotOut(nX, nY))
+            moves.add(new Position(nX,nY));
+        
+        nX = pos.x;
+        nY = pos.y;
+        while(board.isEmpty(nX, nY--)){
+            moves.add(new Position(nX,nY));  
+        }
+        if(board.isNotOut(nX, nY))
+            moves.add(new Position(nX,nY));
+        
+        nX = pos.x;
+        nY = pos.y;
+        while(board.isEmpty(nX--, nY--)){
+            moves.add(new Position(nX,nY));  
+        }
+        if(board.isNotOut(nX, nY))
+            moves.add(new Position(nX,nY));
+        
+        nX = pos.x;
+        nY = pos.y;
+        while(board.isEmpty(nX--, nY)){
+            moves.add(new Position(nX,nY));  
+        }
+        if(board.isNotOut(nX, nY))
+            moves.add(new Position(nX,nY));
+        
+        nX = pos.x;
+        nY = pos.y;
+        while(board.isEmpty(nX--, nY++)){
+            moves.add(new Position(nX,nY));  
+        }
+        if(board.isNotOut(nX, nY))
+            moves.add(new Position(nX,nY));
+        
+        nX = pos.x;
+        nY = pos.y;
+        while(board.isEmpty(nX, nY++)){
+            moves.add(new Position(nX,nY));  
+        }
+        if(board.isNotOut(nX, nY))
+            moves.add(new Position(nX,nY));
+        
+        nX = pos.x;
+        nY = pos.y;
+        while(board.isEmpty(nX++, nY++)){
+            moves.add(new Position(nX,nY));  
+        }
+        if(board.isNotOut(nX, nY))
             moves.add(new Position(nX,nY));
     }
 }
