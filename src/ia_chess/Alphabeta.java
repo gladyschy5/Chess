@@ -5,7 +5,7 @@ public class Alphabeta {
     {
         int bestValue;
 
-        if (node.getChilds().size() == 0)
+        if (node.getChilds().isEmpty())
             bestValue = node.data;
         else if (maximisingPlayer) {
             bestValue = alpha;
