@@ -39,4 +39,8 @@ public class King {
         if(board.isNotOut(nX, nY))
             moves.add(new Position(nX,nY));
     }
+    public static void getMoves(Board board, Position pos){
+        ArrayList<Position> moves = new ArrayList<Position>();
+        getMoves(board, pos, moves);
+    }
 }

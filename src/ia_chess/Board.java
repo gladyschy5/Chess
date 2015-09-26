@@ -67,7 +67,7 @@ public class Board {
         return (isNotOut(x,y)&&(getXY(x,y) == VACIO));
     }
     public boolean isNotOut(int x, int y){
-        return (x>0 && x <8 && x>0 && x <8);
+        return (x>=0 && x <8 && y>=0 && y<8);
     } 
     public Position getPosition(char el){
         for(int i=0; i < 8; i++)
