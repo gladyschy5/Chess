@@ -6,5 +6,8 @@ public class IA_Chess {
         Board a = new Board();
         System.out.println(a.getXY(1, 2));
         System.out.println(a.isEmpty(5, 7));
+        
+        Chess ajedrez = new Chess();
+        ajedrez.start();
     }
 }

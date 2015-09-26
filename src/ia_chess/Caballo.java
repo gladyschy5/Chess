@@ -6,6 +6,7 @@ public class Caballo {
     private Position pos;
     private ArrayList<Position> moves;
     private Board board;
+    
     public Caballo() {
         this.pos = null;
         this.moves = new ArrayList<Position>();

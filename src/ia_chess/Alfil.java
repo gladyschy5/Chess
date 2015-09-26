@@ -6,6 +6,7 @@ public class Alfil {
     private Position pos;
     private ArrayList<Position> moves;
     private Board board;
+    
     public Alfil() {
         this.pos = null;
         this.moves = new ArrayList<Position>();

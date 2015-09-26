@@ -56,9 +56,12 @@ public class Board {
         return board[x][y];
     }
     public void move(int ax, int ay, int bx, int by){
-        char temp = getXY(ax,ay);
         board[ax][ay] = board[bx][by];
-        board[bx][by] = temp;
+        board[bx][by] = VACIO;
+    }
+    public void move(Position start, Position end){
+        board[start.x][start.y] = board[end.x][end.y];
+        board[end.x][end.y] = VACIO;
     }
     public void remove(int x, int y){
         board[x][y] = VACIO;
@@ -175,5 +178,32 @@ public class Board {
     }
     public Position getNPeon8(){
         return getPosition(N_PEON8);
+    }
+    
+    public boolean isWhite(Position pos){
+        char temp = board[pos.x][pos.y];
+        if(temp == 'k' || temp == 'q' || 
+           temp == 't' || temp == 'w' ||
+           temp == 'o' || temp == 's' ||
+           temp == 'l' || temp == 'p' || 
+           temp == 'a' || temp == 'b' ||
+           temp == 'c' || temp == 'd'||
+           temp == 'f' || temp == 'g'||
+           temp == 'h' || temp == 'i')
+            return true;
+        return false;
+    }
+    public boolean isBlack(Position pos){
+        char temp = board[pos.x][pos.y];
+        if(temp == 'K' || temp == 'Q' || 
+           temp == 'T' || temp == 'W' ||
+           temp == 'O' || temp == 'S' ||
+           temp == 'L' || temp == 'P' || 
+           temp == 'A' || temp == 'B' ||
+           temp == 'C' || temp == 'D'||
+           temp == 'F' || temp == 'G'||
+           temp == 'H' || temp == 'I')
+            return true;
+        return false;
     }
 }

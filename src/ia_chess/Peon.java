@@ -6,6 +6,7 @@ public class Peon {
     private Position pos;
     private ArrayList<Position> moves;
     private Board board;
+    
     public Peon() {
         this.pos = null;
         this.moves = new ArrayList<Position>();

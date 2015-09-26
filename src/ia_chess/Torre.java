@@ -6,6 +6,7 @@ public class Torre {
     private Position pos;
     private ArrayList<Position> moves;
     private Board board;
+    
     public Torre() {
         this.pos = null;
         this.moves = new ArrayList<Position>();

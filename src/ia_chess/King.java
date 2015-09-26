@@ -6,27 +6,30 @@ public class King {
     private Position pos;
     private ArrayList<Position> moves;
     private Board board;
+    
     public King() {
         this.pos = null;
         this.moves = new ArrayList<Position>();
         this.board = null;
     }
     
-    public void getMoves(Board board, Position pos, ArrayList<Position> moves){ 
+    public void getMoves(Board board, Position pos, ArrayList<Position> moves, boolean white){ 
         this.pos = pos;
         this.moves = moves;
         this.board = board;
         
-        isMove(pos.x+1, pos.y);
-        isMove(pos.x+1, pos.y-1);       
-        isMove(pos.x, pos.y-1);
-        isMove(pos.x-1, pos.y-1);
-        isMove(pos.x-1, pos.y);
-        isMove(pos.x-1, pos.y+1);
-        isMove(pos.x, pos.y+1);
-        isMove(pos.x+1, pos.y+1);
+        //if(board.isWhite(pos))
+        
+        isMove(pos.x+1, pos.y, white);
+        isMove(pos.x+1, pos.y-1, white);       
+        isMove(pos.x, pos.y-1, white);
+        isMove(pos.x-1, pos.y-1, white);
+        isMove(pos.x-1, pos.y, white);
+        isMove(pos.x-1, pos.y+1, white);
+        isMove(pos.x, pos.y+1, white);
+        isMove(pos.x+1, pos.y+1, white);
     }
-    public void isMove(int x, int y){
+    public void isMove(int x, int y, boolean white){
         if(board.isNotOut(x, y))
             moves.add(new Position(x,y));
     }
