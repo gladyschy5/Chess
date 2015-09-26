@@ -28,7 +28,7 @@ public class Chess {
         
         Position temp = board.getBRey();
         if(temp!=null){
-            rey.getMoves(board, temp, moves);
+            rey.getMoves(board, temp, moves, true);
             generarBoard(profundidad, temp, board, moves, boards);
         }
         temp = board.getBReyna();
