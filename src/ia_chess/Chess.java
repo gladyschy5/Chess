@@ -25,5 +25,13 @@ public class Chess {
         temp = board.getBTorre_D();
         if(temp!=null)
             Torre.getMoves(board, temp, moves);
+        
+        temp = board.getBAlfil_I();
+        if(temp!=null)
+            Alfil.getMoves(board, temp, moves);
+        
+        temp = board.getBAlfil_D();
+        if(temp!=null)
+            Alfil.getMoves(board, temp, moves);
     }
 }
