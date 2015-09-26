@@ -44,7 +44,4 @@ public class Caballo {
         if(board.isNotOut(nX, nY))
             moves.add(new Position(nX,nY));
     }
-    
-    
-    
 }
