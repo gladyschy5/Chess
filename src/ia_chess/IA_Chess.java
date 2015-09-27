@@ -6,5 +6,6 @@ public class IA_Chess {
         Board a = new Board();
         Chess ajedrez = new Chess();
         ajedrez.generarMovimiento();
+        ajedrez.realizarMovimiento(new Position(1,1),new Position(1,1));
     }
 }

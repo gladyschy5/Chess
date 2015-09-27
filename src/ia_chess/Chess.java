@@ -16,6 +16,9 @@ public class Chess {
     public Chess() {
         this.board = new Board();
     }
+    public void realizarMovimiento(Position to, Position from){
+        board.move(to, from);
+    }
     public void generarMovimiento(){
         ArrayList<char[][]> boards = new ArrayList<char[][]>(); 
         root = new Node<Integer>(VAL);
