@@ -51,17 +51,22 @@ public class Board {
                         };
 
     public Board() {
-    }  
+    }
+    public Board(char[][]board) {
+        this.board = board;
+    }
     public char getXY(int x, int y){
         return board[x][y];
     }
     public void move(int ax, int ay, int bx, int by){
-        board[ax][ay] = board[bx][by];
-        board[bx][by] = VACIO;
+        board[bx][by] = board[ax][ay];
+        board[ax][ay] = VACIO;
     }
     public void move(Position start, Position end){
-        board[start.x][start.y] = board[end.x][end.y];
-        board[end.x][end.y] = VACIO;
+        System.out.println(" * " + start.x + " " + start.y + " # " + end.x + " " + end.y);
+        board[end.x][end.y] = board[start.x][start.y];
+        board[start.x][start.y] = VACIO;
+        print(board);
     }
     public void remove(int x, int y){
         board[x][y] = VACIO;
@@ -75,8 +80,9 @@ public class Board {
     public Position getPosition(char el){
         for(int i=0; i < 8; i++)
             for(int j=0; j < 8; j++){
-                if(board[i][j]==el)
+                if(board[i][j]==el){
                     return new Position(i,j);
+                }
             }
         return null;
     }
@@ -131,7 +137,7 @@ public class Board {
     
     
     
-    public Position getNBRey(){
+    public Position getNRey(){
         return getPosition(N_REY);
     }
     public Position getNReyna(){
@@ -187,8 +193,8 @@ public class Board {
            temp == 'o' || temp == 's' ||
            temp == 'l' || temp == 'p' || 
            temp == 'a' || temp == 'b' ||
-           temp == 'c' || temp == 'd'||
-           temp == 'f' || temp == 'g'||
+           temp == 'c' || temp == 'd' ||
+           temp == 'f' || temp == 'g' ||
            temp == 'h' || temp == 'i')
             return true;
         return false;
@@ -200,10 +206,20 @@ public class Board {
            temp == 'O' || temp == 'S' ||
            temp == 'L' || temp == 'P' || 
            temp == 'A' || temp == 'B' ||
-           temp == 'C' || temp == 'D'||
-           temp == 'F' || temp == 'G'||
+           temp == 'C' || temp == 'D' ||
+           temp == 'F' || temp == 'G' ||
            temp == 'H' || temp == 'I')
             return true;
         return false;
+    }
+    
+    public void print(char[][] G){
+        for(int i = 0; i < 8; i++){
+            for(int j = 0; j< 8; j++)
+                System.out.print(G[i][j] + " ");
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println();
     }
 }
