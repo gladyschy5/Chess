@@ -49,11 +49,19 @@ public class Board {
                           {B_PEON1,   B_PEON2,     B_PEON3,   B_PEON4,  B_PEON5,  B_PEON6,   B_PEON7,     B_PEON8 },
                           {B_TORRE_I, B_CABALLO_I, B_ALFIL_I, B_REYNA,  B_REY,    B_ALFIL_D, B_CABALLO_D, B_TORRE_D}
                         };
-
+    
     public Board() {
     }
     public Board(char[][]board) {
         this.board = board;
+    }
+    public char[][] getBoard(){
+        char nuevo[][] = new char[8][8];
+        for(int i = 0; i < 8; i++)
+            for(int j = 0; j < 8; j++)
+                nuevo[i][j] = board[i][j];
+        
+        return nuevo;
     }
     public char getXY(int x, int y){
         return board[x][y];
@@ -63,10 +71,8 @@ public class Board {
         board[ax][ay] = VACIO;
     }
     public void move(Position start, Position end){
-        System.out.println(" * " + start.x + " " + start.y + " # " + end.x + " " + end.y);
         board[end.x][end.y] = board[start.x][start.y];
         board[start.x][start.y] = VACIO;
-        print(board);
     }
     public void remove(int x, int y){
         board[x][y] = VACIO;

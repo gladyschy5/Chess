@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Node<T> {
     protected T data;
+    protected Position from;
+    protected Position to;
     protected boolean visited;
     protected Node<T>father;
     protected ArrayList<Node<T>> childs;
@@ -24,7 +26,13 @@ public class Node<T> {
         this.father = father;
         this.childs = new ArrayList<Node<T>>();
     }
-    
+    public void setPosition(Position from, Position to){
+        this.from = from;
+        this.to = to;
+    }
+    public Position getPosition(){
+        return to;
+    }
     public Node(T data)
     {
         this.data = data;

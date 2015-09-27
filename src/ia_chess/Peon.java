@@ -40,11 +40,9 @@ public class Peon {
     public void isMove(int x, int y, boolean white){    
         if(white){
             if(board.isNotOut(x, y) && !board.isWhite(new Position(x,y))){
-                System.out.println(white + " " + x + " " + y );
                 moves.add(new Position(x,y)); 
             }
         }else{
-            System.out.println(white + " " + x + " " + y );
             if(board.isNotOut(x, y) && !board.isBlack(new Position(x,y)))
                 moves.add(new Position(x,y)); 
         }  
