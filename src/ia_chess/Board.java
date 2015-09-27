@@ -49,19 +49,30 @@ public class Board {
                           {B_PEON1,   B_PEON2,     B_PEON3,   B_PEON4,  B_PEON5,  B_PEON6,   B_PEON7,     B_PEON8 },
                           {B_TORRE_I, B_CABALLO_I, B_ALFIL_I, B_REYNA,  B_REY,    B_ALFIL_D, B_CABALLO_D, B_TORRE_D}
                         };
-
+    
     public Board() {
-    }  
+    }
+    public Board(char[][]board) {
+        this.board = board;
+    }
+    public char[][] getBoard(){
+        char nuevo[][] = new char[8][8];
+        for(int i = 0; i < 8; i++)
+            for(int j = 0; j < 8; j++)
+                nuevo[i][j] = board[i][j];
+        
+        return nuevo;
+    }
     public char getXY(int x, int y){
         return board[x][y];
     }
     public void move(int ax, int ay, int bx, int by){
-        board[ax][ay] = board[bx][by];
-        board[bx][by] = VACIO;
+        board[bx][by] = board[ax][ay];
+        board[ax][ay] = VACIO;
     }
     public void move(Position start, Position end){
-        board[start.x][start.y] = board[end.x][end.y];
-        board[end.x][end.y] = VACIO;
+        board[end.x][end.y] = board[start.x][start.y];
+        board[start.x][start.y] = VACIO;
     }
     public void remove(int x, int y){
         board[x][y] = VACIO;
@@ -75,8 +86,9 @@ public class Board {
     public Position getPosition(char el){
         for(int i=0; i < 8; i++)
             for(int j=0; j < 8; j++){
-                if(board[i][j]==el)
+                if(board[i][j]==el){
                     return new Position(i,j);
+                }
             }
         return null;
     }
@@ -187,8 +199,8 @@ public class Board {
            temp == 'o' || temp == 's' ||
            temp == 'l' || temp == 'p' || 
            temp == 'a' || temp == 'b' ||
-           temp == 'c' || temp == 'd'||
-           temp == 'f' || temp == 'g'||
+           temp == 'c' || temp == 'd' ||
+           temp == 'f' || temp == 'g' ||
            temp == 'h' || temp == 'i')
             return true;
         return false;
@@ -200,8 +212,8 @@ public class Board {
            temp == 'O' || temp == 'S' ||
            temp == 'L' || temp == 'P' || 
            temp == 'A' || temp == 'B' ||
-           temp == 'C' || temp == 'D'||
-           temp == 'F' || temp == 'G'||
+           temp == 'C' || temp == 'D' ||
+           temp == 'F' || temp == 'G' ||
            temp == 'H' || temp == 'I')
             return true;
         return false;

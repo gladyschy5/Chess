@@ -26,17 +26,18 @@ public class Queen {
         isMove(pos.x, pos.y,  0,  1, white);
         isMove(pos.x, pos.y,  1,  1, white);
     }
-    public void isMove(int x, int y, int varx, int vary, boolean white){
+    public void isMove(int x, int y, int varx, int vary, boolean white){        
         int xx = x + varx;
         int yy = y + vary;
-        while(board.isEmpty(xx, yy)){
+        while(board.isEmpty(xx, yy)){  
             moves.add(new Position(xx,yy)); 
             xx+=varx;
             yy+=vary;
         }
-        if(white){   
-            if(board.isNotOut(xx, yy) && !board.isWhite(new Position(xx,yy)))
+        if(white){               
+            if(board.isNotOut(xx, yy) && !board.isWhite(new Position(xx,yy))){
                 moves.add(new Position(xx,yy)); 
+            }
         }else{
             if(board.isNotOut(xx, yy) && !board.isBlack(new Position(xx,yy)))
                 moves.add(new Position(xx,yy));

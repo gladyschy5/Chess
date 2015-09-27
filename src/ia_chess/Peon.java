@@ -24,8 +24,8 @@ public class Peon {
             }else{
                 isMove(pos.x-1, pos.y, white);
             }
-            isMove(pos.x-1, pos.y-1, white);
-            isMove(pos.x-1, pos.y+1, white);
+            isMoveD(pos.x-1, pos.y-1, white);
+            isMoveD(pos.x-1, pos.y+1, white);
         }else{
             if(pos.x == 1){
                 isMove(pos.x+1, pos.y, white);
@@ -33,17 +33,28 @@ public class Peon {
             }else{
                 isMove(pos.x+1, pos.y, white);
             }
-            isMove(pos.x+1, pos.y+1, white);
-            isMove(pos.x+1, pos.y+1, white);
+            isMoveD(pos.x+1, pos.y+1, white);
+            isMoveD(pos.x+1, pos.y+1, white);
         }
     }
-    public void isMove(int x, int y, boolean white){
+    public void isMove(int x, int y, boolean white){    
         if(white){
-            if(board.isNotOut(x, y) && !board.isWhite(new Position(x,y)))
+            if(board.isNotOut(x, y) && !board.isWhite(new Position(x,y))){
                 moves.add(new Position(x,y)); 
+            }
         }else{
             if(board.isNotOut(x, y) && !board.isBlack(new Position(x,y)))
                 moves.add(new Position(x,y)); 
         }  
+    }
+    public void isMoveD(int x, int y, boolean white){    
+        if(white){
+            if(board.isNotOut(x, y) && board.isBlack(new Position(x,y))){
+                moves.add(new Position(x,y)); 
+            }
+        }else{
+            if(board.isNotOut(x, y) && board.isWhite(new Position(x,y)))
+                moves.add(new Position(x,y)); 
+        }
     }
 }
