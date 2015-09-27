@@ -131,7 +131,7 @@ public class Board {
     
     
     
-    public Position getNBRey(){
+    public Position getNRey(){
         return getPosition(N_REY);
     }
     public Position getNReyna(){
