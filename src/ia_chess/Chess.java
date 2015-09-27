@@ -16,16 +16,6 @@ public class Chess {
     public Chess() {
         this.board = new Board();
     }
-    public void start(){
-        ArrayList<char[][]> boards = new ArrayList<char[][]>(); 
-        root = new Node<Integer>(VAL);
-        generateMoves(board, 1, boards, false, root);
-        /*for(int i = 0; i < boards.size(); i++)
-            print(boards.get(i));
-        root.print();
-        */
-        
-    }
     public void generarMovimiento(){
         ArrayList<char[][]> boards = new ArrayList<char[][]>(); 
         root = new Node<Integer>(VAL);
@@ -223,6 +213,7 @@ public class Chess {
             
             if(profundidad == 0){
                 boards.add(nuevoBoard.board);
+                // aqui pesitooooo
             }else{
                 if(white)
                     generateMoves(nuevoBoard,profundidad-1, boards, false, nuevoNodo);
