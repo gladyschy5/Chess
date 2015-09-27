@@ -9,25 +9,76 @@ public class IA_Chess {
         Board a = new Board();
         Chess ajedrez = new Chess();
         ajedrez.generarMovimiento();
-        ajedrez.realizarMovimiento(new Position(1,1),new Position(1,1));
+        ajedrez.realizarMovimiento(new Position(1,1),new Position(2,1));
 
         Scanner teclado = new Scanner(System.in);
         String xyTo;
-        String xyFrom;
+        int x1,x2;
         while(true)
         {
             ajedrez.print();
-            System.out.println("Ingrese de ficha a mover: ");
+            System.out.println("Ingrese ficha a mover: ");
             xyTo = teclado.next();
             System.out.println("Ingrese coordenadas de nueva posicion: ");
-            xyFrom = teclado.next();
-            ajedrez.realizarMovimiento(new Position(1,1),new Position(1,1));
+            x1 = teclado.nextInt();
+            x2 = teclado.nextInt();
+            ajedrez.realizarMovimiento(getFichaPos(xyTo, a),new Position(x1,x2));
             ajedrez.generarMovimiento();
         }       
-        /*
-        Board b = new Board();
-        Evaluacion e = new Evaluacion();
-        System.out.println(e.evaluar(b, false));
-        */
+    }
+    
+    public static Position getFichaPos(String s, Board b)
+    {
+        switch(s.charAt(0))
+        {
+            case Board.B_REY:
+                return b.getBRey();
+
+            case Board.B_REYNA:
+                return b.getBReyna();
+
+            case Board.B_ALFIL_D:
+                return b.getBAlfil_D();
+                
+            case Board.B_ALFIL_I:
+                return b.getBAlfil_I();
+
+            case Board.B_CABALLO_D:
+                return b.getBCaballo_D();
+                
+            case Board.B_CABALLO_I:
+                return b.getBCaballo_I();
+
+            case Board.B_TORRE_D:
+                return b.getBTorre_D();
+                
+            case Board.B_TORRE_I:
+                return b.getBTorre_I();
+                
+            case Board.B_PEON1:
+                return b.getBPeon1();
+                
+            case Board.B_PEON2:
+                return b.getBPeon1();
+                
+            case Board.B_PEON3:
+                return b.getBPeon1();
+                
+            case Board.B_PEON4:
+                return b.getBPeon1();
+                
+            case Board.B_PEON5:
+                return b.getBPeon1();
+                
+            case Board.B_PEON6:
+                return b.getBPeon1();
+                
+            case Board.B_PEON7:
+                return b.getBPeon1();
+                
+            case Board.B_PEON8:
+                return b.getBPeon1();
+        }
+        return null;
     }
 }
