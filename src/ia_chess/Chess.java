@@ -225,6 +225,9 @@ public class Chess {
             }
         }
     }
+    public void print(){
+        print(board.board); 
+    }
     public void print(char[][] G){
         for(int i = 0; i < 8; i++){
             for(int j = 0; j< 8; j++)
