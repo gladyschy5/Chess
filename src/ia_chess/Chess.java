@@ -206,6 +206,7 @@ public class Chess {
         } 
     }
     public void generarBoard(int profundidad, Position currentPosition, Board currentBoard, ArrayList<Position> moves, ArrayList<char[][]> boards, boolean white, Node<Integer> nodo){       
+        Evaluador e = new Evaluador();
         for(Position pos: moves){
             Board nuevoBoard = new Board(currentBoard.getBoard());
             nuevoBoard.move(currentPosition, pos);
@@ -216,7 +217,7 @@ public class Chess {
             
             if(profundidad == 0){
                 boards.add(nuevoBoard.board);
-                // aqui pesitooooo
+                nuevoNodo.setData(e.evaluar(nuevoBoard, white));
             }else{
                 if(white)
                     generateMoves(nuevoBoard,profundidad-1, boards, false, nuevoNodo);

@@ -2,7 +2,7 @@ package ia_chess;
 
 import java.util.ArrayList;
 
-public class Evaluacion
+public class Evaluador
 {
     King rey = new King();
     Queen reyna = new Queen();
