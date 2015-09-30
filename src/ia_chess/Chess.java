@@ -7,23 +7,174 @@ public class Chess {
     King rey = new King();
     Queen reyna = new Queen();
     Torre torre = new Torre();
+    Caballo caballo = new Caballo();
     Alfil alfil = new Alfil();
     Peon peon = new Peon();
-    Node<Integer> root;
     
+    Node<Integer> root;
+    public final int PROFUNDIDAD = 2;
     int VAL = -10;
     
     public Chess() {
         this.board = new Board();
     }
-    public void realizarMovimiento(Position to, Position from){
-        board.move(to, from);
+    public void realizarMovimiento(char s, Position to, boolean white){
+        Position from = null;
+        ArrayList<Position> moves = new ArrayList<Position>();
+        if(white){
+            switch(s)
+            {
+                case Board.B_REY:
+                    from = board.getBRey();
+                    rey.getMoves(board, from, moves, white);
+                    break;
+                case Board.B_REYNA:
+                    from = board.getBReyna();
+                    reyna.getMoves(board, from, moves, white);
+                    break;
+                case Board.B_ALFIL_D:
+                    from = board.getBAlfil_D();
+                    alfil.getMoves(board, from, moves, white);
+                    break;
+                case Board.B_ALFIL_I:
+                    from = board.getBAlfil_I();
+                    alfil.getMoves(board, from, moves, white);
+                    break;
+                case Board.B_CABALLO_D:
+                    from = board.getBCaballo_D();
+                    caballo.getMoves(board, from, moves, white);
+                    break;
+                case Board.B_CABALLO_I:
+                    from = board.getBCaballo_I();
+                    caballo.getMoves(board, from, moves, white);
+                    break;
+                case Board.B_TORRE_D:
+                    from = board.getBTorre_D();
+                    torre.getMoves(board, from, moves, white);
+                    break;
+                case Board.B_TORRE_I:
+                    from = board.getBTorre_I();
+                    torre.getMoves(board, from, moves, white);
+                    break;
+                case Board.B_PEON1:
+                    from = board.getBPeon1();
+                    peon.getMoves(board, from, moves, white);
+                    break;
+                case Board.B_PEON2:
+                    from = board.getBPeon1();
+                    peon.getMoves(board, from, moves, white);
+                    break;
+                case Board.B_PEON3:
+                    from = board.getBPeon1();
+                    peon.getMoves(board, from, moves, white);
+                    break;
+                case Board.B_PEON4:
+                    from = board.getBPeon1();
+                    peon.getMoves(board, from, moves, white);
+                    break;
+                case Board.B_PEON5:
+                    from = board.getBPeon1();
+                    peon.getMoves(board, from, moves, white);
+                    break;
+                case Board.B_PEON6:
+                    from = board.getBPeon1();
+                    peon.getMoves(board, from, moves, white);
+                    break;
+                case Board.B_PEON7:
+                    from = board.getBPeon1();
+                    peon.getMoves(board, from, moves, white);
+                    break;
+                case Board.B_PEON8:
+                    from = board.getBPeon1();
+                    peon.getMoves(board, from, moves, white);
+                    break;
+            }
+        }else{
+            switch(s)
+            {
+                case Board.N_REY:
+                    from = board.getBRey();
+                    rey.getMoves(board, from, moves, white);
+                    break;
+                case Board.N_REYNA:
+                    from = board.getBReyna();
+                    reyna.getMoves(board, from, moves, white);
+                    break;
+                case Board.N_ALFIL_D:
+                    from = board.getBAlfil_D();
+                    alfil.getMoves(board, from, moves, white);
+                    break;
+                case Board.N_ALFIL_I:
+                    from = board.getBAlfil_I();
+                    alfil.getMoves(board, from, moves, white);
+                    break;
+                case Board.N_CABALLO_D:
+                    from = board.getBCaballo_D();
+                    caballo.getMoves(board, from, moves, white);
+                    break;
+                case Board.N_CABALLO_I:
+                    from = board.getBCaballo_I();
+                    caballo.getMoves(board, from, moves, white);
+                    break;
+                case Board.N_TORRE_D:
+                    from = board.getBTorre_D();
+                    torre.getMoves(board, from, moves, white);
+                    break;
+                case Board.N_TORRE_I:
+                    from = board.getBTorre_I();
+                    torre.getMoves(board, from, moves, white);
+                    break;
+                case Board.N_PEON1:
+                    from = board.getBPeon1();
+                    peon.getMoves(board, from, moves, white);
+                    break;
+                case Board.N_PEON2:
+                    from = board.getBPeon1();
+                    peon.getMoves(board, from, moves, white);
+                    break;
+                case Board.N_PEON3:
+                    from = board.getBPeon1();
+                    peon.getMoves(board, from, moves, white);
+                    break;
+                case Board.N_PEON4:
+                    from = board.getBPeon1();
+                    peon.getMoves(board, from, moves, white);
+                    break;
+                case Board.N_PEON5:
+                    from = board.getBPeon1();
+                    peon.getMoves(board, from, moves, white);
+                    break;
+                case Board.N_PEON6:
+                    from = board.getBPeon1();
+                    peon.getMoves(board, from, moves, white);
+                    break;
+                case Board.N_PEON7:
+                    from = board.getBPeon1();
+                    peon.getMoves(board, from, moves, white);
+                    break;
+                case Board.N_PEON8:
+                    from = board.getBPeon1();
+                    peon.getMoves(board, from, moves, white);
+                    break;
+            }
+        }
+        
+        verificarMovimiento(moves, from, to);
+    }
+    public boolean verificarMovimiento(ArrayList<Position> moves, Position actual, Position nueva){
+        for(Position a: moves)
+            if(a.equals(nueva)){
+                board.move(actual, nueva);
+                return true;
+            }
+        System.out.print("Nueva poscion no valida");
+        return false;
     }
     public void generarMovimiento(){
         ArrayList<char[][]> boards = new ArrayList<char[][]>(); 
         root = new Node<Integer>(VAL);
         root.setPosition(new Position(VAL,VAL), new Position(VAL,VAL));
-        generateMoves(board, 3, boards, false, root);
+        generateMoves(board, PROFUNDIDAD, boards, false, root);
         Alphabeta ab = new Alphabeta();
         Node<Integer> mov = ab.alphaBeta(root);
         if(mov.to!=null){
@@ -66,6 +217,19 @@ public class Chess {
             if(temp!=null){
                 ArrayList<Position> moves = new ArrayList<Position>();
                 alfil.getMoves(board, temp, moves, white);
+                generarBoard(profundidad, temp, board, moves, boards, white, nodo);
+            }
+            
+            temp = board.getBCaballo_I();
+            if(temp!=null){
+                ArrayList<Position> moves = new ArrayList<Position>();
+                caballo.getMoves(board, temp, moves, white);
+                generarBoard(profundidad, temp, board, moves, boards, white, nodo);
+            }
+            temp = board.getBCaballo_D();
+            if(temp!=null){
+                ArrayList<Position> moves = new ArrayList<Position>();
+                caballo.getMoves(board, temp, moves, white);
                 generarBoard(profundidad, temp, board, moves, boards, white, nodo);
             }
 
@@ -154,7 +318,20 @@ public class Chess {
                 alfil.getMoves(board, temp, moves, white);
                 generarBoard(profundidad, temp, board, moves, boards, white, nodo);
             }
-
+            
+            temp = board.getNCaballo_I();
+            if(temp!=null){
+                ArrayList<Position> moves = new ArrayList<Position>();
+                caballo.getMoves(board, temp, moves, white);
+                generarBoard(profundidad, temp, board, moves, boards, white, nodo);
+            }
+            temp = board.getNCaballo_D();
+            if(temp!=null){
+                ArrayList<Position> moves = new ArrayList<Position>();
+                caballo.getMoves(board, temp, moves, white);
+                generarBoard(profundidad, temp, board, moves, boards, white, nodo);
+            }
+            
             temp = board.getNPeon1();
             if(temp!=null){
                 ArrayList<Position> moves = new ArrayList<Position>();

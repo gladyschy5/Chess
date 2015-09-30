@@ -8,8 +8,6 @@ public class IA_Chess {
     {
         Board a = new Board();
         Chess ajedrez = new Chess();
-        ajedrez.generarMovimiento();
-        ajedrez.realizarMovimiento(new Position(1,1),new Position(2,1));
 
         Scanner teclado = new Scanner(System.in);
         String xyTo;
@@ -22,7 +20,7 @@ public class IA_Chess {
             System.out.println("Ingrese coordenadas de nueva posicion: ");
             x1 = teclado.nextInt();
             x2 = teclado.nextInt();
-            ajedrez.realizarMovimiento(getFichaPos(xyTo, a),new Position(x1,x2));
+            ajedrez.realizarMovimiento(xyTo.charAt(0), new Position(x1,x2), true);
             ajedrez.generarMovimiento();
         }       
     }
